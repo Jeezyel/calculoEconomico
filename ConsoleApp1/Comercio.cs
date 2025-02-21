@@ -5,6 +5,9 @@ public class Comercio
 
     private double Emprega { get; set; } = 200;
     private double salarioDeCadaEmpregado { get; set; } = 7500;
+
+    //tem caixa mas n tem item para vender 
+    //vc pode gastar tudo de uma vez e vendo quando ganha pra comprar mais 
     private double caixaDaEmpresa { get; set; } = 10000000;
     private double custoDeReposicaoDeEstoque { get; set; } = 75;
     private double valorDaVenda { get; set; } = 203;
