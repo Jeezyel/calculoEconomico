@@ -4,15 +4,45 @@ using System.Runtime.CompilerServices;
 
 public class ComercioMercado
 {
-    private int anosPassados;
+    
 
-    // quando o mes chegar a 12  zera e começa denovo e add +1 na variavel "anosPassados"
-    private int mesPassados;
 
+    // TODOS OS VALORA DOS SALARIO SERÃO SERÃOCALCULADO JUNTO DEPOS DIVIDIDO PARA DAR O
+    // VALOR DE CADA COLABORADOR
     static void Main(string[] args)
     {
+        CLT[] clt;
+        Comercio comercio = new Comercio();
+        Industria industria = new Industria();
+        Prefeitura prefeitura = new Prefeitura();
+
+
+        int anosPassados = 0;
+
+        // quando o mes chegar a 12  zera e começa denovo e add +1 na variavel "anosPassados"
+        int mesPassados = 0;
         
+
         
+
+
+        for (int i = 0; mesPassados <= 13; mesPassados++)
+        {
+            if (mesPassados == 13)
+            {
+                anosPassados++;
+                mesPassados = 0;
+            }
+                
+            if (anosPassados == 5)
+            {
+                mesPassados = 14;
+            }
+
+            Console.WriteLine("ANOS PASSADOS: " + anosPassados + "\nMES PASSADO: " + mesPassados);
+
+        }
+
     }
 
     public static double impostoSobreSalario()
@@ -53,6 +83,8 @@ public class ComercioMercado
         double imposto = precoVenda * 0.18;
         return imposto;
     }
+
+    
 
 
 }

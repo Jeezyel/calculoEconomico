@@ -9,6 +9,8 @@ public class Industria
     private double custoDeReposicaoDeEstoque { get; set; } = 42.75;
     private double valorDaVenda { get; set; } = 75;
 
+    private int quantidadeDeProduto { get; set; } = 0;
+
     /*
      * O Comércio precisa ter estoque suficiente para atender toda a população economicamente ativa.
      * Se não conseguir repor o estoque, a simulação deve ser interrompida
