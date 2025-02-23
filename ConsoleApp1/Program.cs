@@ -1,17 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Runtime.CompilerServices;
-
 public class ComercioMercado
 {
-    
+
 
 
     // TODOS OS VALORA DOS SALARIO SERÃO SERÃOCALCULADO JUNTO DEPOS DIVIDIDO PARA DAR O
     // VALOR DE CADA COLABORADOR
     static void Main(string[] args)
     {
-        CLT[] clt;
+        CLT cltPrefeitura = new CLT();
+        CLT cltComercio = new CLT();
+        CLT cltIndustria = new CLT();
         Comercio comercio = new Comercio();
         Industria industria = new Industria();
         Prefeitura prefeitura = new Prefeitura();
@@ -21,25 +21,49 @@ public class ComercioMercado
 
         // quando o mes chegar a 12  zera e começa denovo e add +1 na variavel "anosPassados"
         int mesPassados = 0;
-        
-
-        
 
 
-        for (int i = 0; mesPassados <= 13; mesPassados++)
+
+        cltPrefeitura.OrgaoContratante = OrgaoContratante.Prefeitura;
+        cltComercio.OrgaoContratante = OrgaoContratante.Prefeitura;
+        cltIndustria.OrgaoContratante = OrgaoContratante.Prefeitura;
+
+        for (; mesPassados <= 13; mesPassados++)
         {
             if (mesPassados == 13)
             {
                 anosPassados++;
                 mesPassados = 0;
             }
-                
+
             if (anosPassados == 5)
             {
                 mesPassados = 14;
             }
 
             Console.WriteLine("ANOS PASSADOS: " + anosPassados + "\nMES PASSADO: " + mesPassados);
+
+            //falta calcular os salario do colaboradores da Industria e Comercio
+            //falta compra dos recurços da Industria e Comercio
+            //falta fazer as compra dos clt e bolsistas
+
+            // pagamento dos funcionario
+            // prefeitura
+
+            cltPrefeitura.SalarioGeral = cltPrefeitura.SalarioGeral + (prefeitura.Emprega * prefeitura.salarioDeCadaEmpregado);
+            cltPrefeitura.SalarioUnitario = prefeitura.salarioDeCadaEmpregado;
+
+            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa - (prefeitura.Emprega * (55000 + prefeitura.salarioDeCadaEmpregado));
+
+            Console.WriteLine("valor pago pela prefeitura: " + prefeitura.caixaDaEmpresa);
+
+            //comercio
+
+
+
+
+
+
 
         }
 
@@ -83,8 +107,6 @@ public class ComercioMercado
         double imposto = precoVenda * 0.18;
         return imposto;
     }
-
-    
 
 
 }

@@ -4,7 +4,8 @@ public enum OrgaoContratante
 {
     Prefeitura,
     Comercio,
-    Industria
+    Industria,
+    SemEmprego
 
 
 
