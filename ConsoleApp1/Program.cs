@@ -43,21 +43,44 @@ public class ComercioMercado
 
             Console.WriteLine("ANOS PASSADOS: " + anosPassados + "\nMES PASSADO: " + mesPassados);
 
-            //falta calcular os salario do colaboradores da Industria e Comercio
+            
             //falta compra dos recurços da Industria e Comercio
             //falta fazer as compra dos clt e bolsistas
 
             // pagamento dos funcionario
             // prefeitura
 
-            cltPrefeitura.SalarioGeral = cltPrefeitura.SalarioGeral + (prefeitura.Emprega * prefeitura.salarioDeCadaEmpregado);
-            cltPrefeitura.SalarioUnitario = prefeitura.salarioDeCadaEmpregado;
+            cltPrefeitura.SalarioGeral = (prefeitura.Emprega * (prefeitura.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(prefeitura.salarioDeCadaEmpregado)));
+            cltPrefeitura.SalarioUnitario = prefeitura.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregado(prefeitura.salarioDeCadaEmpregado);
 
-            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa - (prefeitura.Emprega * (55000 + prefeitura.salarioDeCadaEmpregado));
+
+            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa - (55000 + (prefeitura.Emprega * prefeitura.salarioDeCadaEmpregado));
+
+            //valor arrecadado dos salario dos colaboradores
+            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa + (CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado));
+
 
             Console.WriteLine("valor pago pela prefeitura: " + prefeitura.caixaDaEmpresa);
 
             //comercio
+
+
+
+            cltComercio.SalarioGeral = comercio.Emprega * (comercio.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado));
+            cltComercio.SalarioUnitario = comercio.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado);
+
+            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa + ( CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado));
+
+            Console.WriteLine("caixa da prefeitura: "+ prefeitura.caixaDaEmpresa );
+
+            //industria
+
+            cltIndustria.SalarioGeral = industria.Emprega * (industria.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado));
+            cltIndustria.SalarioUnitario = industria.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado);
+
+            prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa + (CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado));
+
+            Console.WriteLine("caixa da prefeitura: " + prefeitura.caixaDaEmpresa);
 
 
 
