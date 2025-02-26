@@ -44,8 +44,7 @@ public class ComercioMercado
             Console.WriteLine("ANOS PASSADOS: " + anosPassados + "\nMES PASSADO: " + mesPassados);
 
             
-            //falta compra dos recurços da Industria e Comercio
-            //falta fazer as compra dos clt e bolsistas
+            //em comercio tem que colocar o recebimentos dos clt 
 
             // pagamento dos funcionario
             // prefeitura
@@ -69,6 +68,8 @@ public class ComercioMercado
             cltComercio.SalarioGeral = comercio.Emprega * (comercio.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado));
             cltComercio.SalarioUnitario = comercio.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado);
 
+            comercio.caixaDaEmpresa = comercio.caixaDaEmpresa - (comercio.Emprega * comercio.salarioDeCadaEmpregado);
+
             prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa + ( CalcularImpostoSalarioEmpregador(comercio.salarioDeCadaEmpregado));
 
             Console.WriteLine("caixa da prefeitura: "+ prefeitura.caixaDaEmpresa );
@@ -78,11 +79,22 @@ public class ComercioMercado
             cltIndustria.SalarioGeral = industria.Emprega * (industria.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado));
             cltIndustria.SalarioUnitario = industria.salarioDeCadaEmpregado - CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado);
 
+            industria.caixaDaEmpresa = industria.caixaDaEmpresa - (industria.Emprega * industria.salarioDeCadaEmpregado);
+
             prefeitura.caixaDaEmpresa = prefeitura.caixaDaEmpresa + (CalcularImpostoSalarioEmpregador(industria.salarioDeCadaEmpregado));
 
             Console.WriteLine("caixa da prefeitura: " + prefeitura.caixaDaEmpresa);
 
 
+            //compra dos ensumus do comercio e da industria
+
+            Console.WriteLine("\n Simulação de um mês: " + (mesPassados -1));
+            bool estoqueReposto = comercio.ReporEstoque(industria);
+
+            if (!estoqueReposto)
+            {
+                Console.WriteLine(" A simulação foi encerrada porque o Comércio não conseguiu repor o estoque.");
+            }
 
 
 

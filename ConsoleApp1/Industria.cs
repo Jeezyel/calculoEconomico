@@ -11,10 +11,34 @@ public class Industria
 
     public int quantidadeDeProduto { get; set; } = 0;
 
-    /*
-     * O Comércio precisa ter estoque suficiente para atender toda a população economicamente ativa.
-     * Se não conseguir repor o estoque, a simulação deve ser interrompida
-     * */
+
+    // Método para vender produtos ao Comércio
+    public bool VenderParaComercio(int quantidade, out double receitaLiquida)
+    {
+        receitaLiquida = 0;
+
+        // Custo total para produzir os itens
+        double custoTotalProducao = quantidade * custoDeReposicaoDeEstoque;
+        if (caixaDaEmpresa < custoTotalProducao)
+        {
+            Console.WriteLine("❌ Indústria não tem dinheiro suficiente para produzir os itens.");
+            return false;
+        }
+
+        // Deduz custo de produção
+        caixaDaEmpresa -= custoTotalProducao;
+
+        // Receita bruta da venda
+        double receitaBruta = quantidade * valorDaVenda;
+        double imposto = receitaBruta * 0.18; // 18% de imposto sobre venda
+        receitaLiquida = receitaBruta - imposto;
+
+        // Adiciona a receita líquida ao caixa
+        caixaDaEmpresa += receitaLiquida;
+
+        Console.WriteLine($"✅ Indústria vendeu {quantidade} itens para o Comércio e recebeu R$ {receitaLiquida:N2} (após imposto).");
+        return true;
+    }
 
 }
 

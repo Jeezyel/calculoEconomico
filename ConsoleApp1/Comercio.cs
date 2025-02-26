@@ -14,10 +14,31 @@ public class Comercio
 
     public int quantidadeDeProduto { get; set; } = 0;
 
-    /*
-     * O Comércio precisa ter estoque suficiente para atender toda a população economicamente ativa.
-     * Se não conseguir repor o estoque, a simulação deve ser interrompida
-     * */
+    public bool ReporEstoque(Industria industria)
+    {
+        int quantidadeNecessaria = 1055;
+        double custoTotal = quantidadeNecessaria * industria.valorDaVenda;
+
+        if (caixaDaEmpresa < custoTotal)
+        {
+            Console.WriteLine("❌ Comércio não tem dinheiro suficiente para repor o estoque!");
+            return false;
+        }
+
+
+        bool compraRealizada = industria.VenderParaComercio(quantidadeNecessaria, out double valorPago);
+        if (!compraRealizada)
+        {
+            Console.WriteLine("❌ Indústria não conseguiu fornecer os itens necessários.");
+            return false;
+        }
+
+        caixaDaEmpresa -= custoTotal;
+        quantidadeDeProduto += quantidadeNecessaria;
+
+        Console.WriteLine($"✅ Comércio comprou {quantidadeNecessaria} itens da Indústria por R$ {custoTotal:N2}");
+        return true;
+    }
 
 }
 
