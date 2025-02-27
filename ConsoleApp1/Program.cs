@@ -36,15 +36,24 @@ public class ComercioMercado
                 mesPassados = 0;
             }
 
-            if (anosPassados == 5)
-            {
-                mesPassados = 14;
-            }
+            
 
             Console.WriteLine("ANOS PASSADOS: " + anosPassados + "\nMES PASSADO: " + mesPassados);
 
-            
+
             //em comercio tem que colocar o recebimentos dos clt 
+
+            if (comercio.caixaDaEmpresa < 0 || industria.caixaDaEmpresa < 0)
+            {
+                
+                break;
+            }
+            else
+            {
+                cltPrefeitura.ComprarNoComercio(comercio, prefeitura);
+                cltComercio.ComprarNoComercio(comercio, prefeitura);
+                cltIndustria.ComprarNoComercio(comercio, prefeitura);
+            }
 
             // pagamento dos funcionario
             // prefeitura
@@ -95,6 +104,8 @@ public class ComercioMercado
             {
                 Console.WriteLine(" A simulação foi encerrada porque o Comércio não conseguiu repor o estoque.");
             }
+
+            
 
 
 

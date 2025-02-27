@@ -40,5 +40,33 @@ public class Comercio
         return true;
     }
 
+    // Método para calcular imposto sobre salário do empregador
+    public static double CalcularImpostoSalarioEmpregador(double salario)
+    {
+        double imposto = salario * 0.61;
+        return imposto;
+    }
+
+    // Método para calcular imposto sobre salário do empregado
+    public static double CalcularImpostoSalarioEmpregado(double salario)
+    {
+        double imposto = salario * 0.25;
+        return imposto;
+    }
+
+    // Método para calcular imposto sobre venda do comércio
+    public double CalcularImpostoVendaComercio(double precoVenda)
+    {
+        double imposto = precoVenda * 0.38;
+        return imposto;
+    }
+
+    // Método para calcular imposto sobre venda da indústria
+    public static double CalcularImpostoVendaIndustria(double precoVenda)
+    {
+        double imposto = precoVenda * 0.18;
+        return imposto;
+    }
+
 }
 
